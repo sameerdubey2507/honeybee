@@ -48,57 +48,51 @@ body {
 }
 header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1400px, 98vw);
   z-index: 200;
-  padding-block: 0.65rem 0.85rem;
-  border-bottom: 1px solid rgba(68, 80, 34, 0.55);
-  background: transparent;
-  -webkit-backdrop-filter: blur(18px) saturate(1.15);
-          backdrop-filter: blur(18px) saturate(1.15);
+  padding: 1rem 4rem;
+  border: 1px solid rgba(209, 255, 72, 0.15);
+  background: rgba(27, 27, 27, 0.6);
+  backdrop-filter: blur(20px) saturate(1.5);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 header .content-fit {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
   min-height: unset !important;
-  padding-block: unset !important;
-  padding-inline: clamp(1rem, 4vw, 2rem);
+  padding: 0 !important;
 }
 
 header .logo {
   font-family: "devil breeze", "Poppins", sans-serif;
-  font-size: clamp(1.15rem, 2.8vw, 1.65rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   font-weight: 700;
   letter-spacing: 0.06em;
-  line-height: 1;
-  background: linear-gradient(
-    120deg,
-    #d1ff48 0%,
-    #f4ffd0 42%,
-    #c8d896 100%
-  );
+  background: linear-gradient(120deg, #d1ff48, #f4ffd0);
   -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 0 14px rgba(209, 255, 72, 0.22));
 }
 
 header .content-fit nav ul {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-end;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.75rem;
 }
 
 header nav a {
   display: inline-block;
   font-family: "Poppins", sans-serif;
-  font-size: clamp(0.68rem, 1.4vw, 0.78rem);
+  font-size: clamp(0.65rem, 1.2vw, 0.72rem);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -268,4 +262,124 @@ header nav a:focus-visible {
   #container3D {
     position: sticky;
   }
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: rgba(27, 27, 27, 0.95);
+  border: 1px solid rgba(209, 255, 72, 0.2);
+  padding: 3rem;
+  border-radius: 24px;
+  width: min(500px, 90vw);
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: #73814b;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #d1ff48;
+}
+
+.modal-header h2 {
+  font-family: "devil breeze";
+  color: #d1ff48;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-header p {
+  color: #eef8ce;
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #eef8ce;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(115, 129, 75, 0.3);
+  border-radius: 12px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #d1ff48;
+  box-shadow: 0 0 0 3px rgba(209, 255, 72, 0.1);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #d1ff48;
+  border: none;
+  border-radius: 12px;
+  color: #1b1b1b;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(209, 255, 72, 0.3);
+}
+
+.success-message {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.success-message h3 {
+  color: #d1ff48;
+  margin-bottom: 1rem;
+}
+
+.success-message p {
+  color: #eef8ce;
+  line-height: 1.6;
 }

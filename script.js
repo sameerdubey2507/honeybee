@@ -91,3 +91,32 @@ window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
 });
+
+// Modal Logic
+const modal = document.getElementById("contributorModal");
+const btn = document.getElementById("contributorBtn");
+const span = document.getElementsByClassName("close-btn")[0];
+const form = document.getElementById("contributorForm");
+const successMsg = document.getElementById("successMsg");
+
+btn.onclick = function() {
+  modal.style.display = "flex";
+  form.style.display = "block";
+  successMsg.style.display = "none";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+form.onsubmit = function(e) {
+  e.preventDefault();
+  form.style.display = "none";
+  successMsg.style.display = "block";
+}
